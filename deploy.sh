@@ -11,4 +11,4 @@ if [ $# -eq 1 ]
 fi
 git commit -m "$msg"
 
-git push
+git push origin main
