@@ -22,7 +22,8 @@ call plug#end()
 " Vim configuration file (default: ~/.vimrc):
 set rtp+=/opt/local/share/fzf/vim
 
-" Cmd-Shift-N for nerd tree
+"" Shortcuts for NERDTRee
+
 nnoremap <D-N> :NERDTree<CR>
 nmap <F6> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
