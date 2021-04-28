@@ -1,39 +1,89 @@
-" Specify a directory for plugins
-" - For Neovim: stdpath('data') . '/plugged'
-" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-Plug 'dikiaap/minimalist'
+" Initialize plugin system
+Plug 'junegunn/fzf.vim'
+" Ensure that we have the latest version
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug '907th/vim-auto-save'
+Plug 'itchyny/lightline.vim'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'jiangmiao/auto-pairs'
+Plug 'dense-analysis/ale'
 Plug 'preservim/nerdtree'
 
-" Initialize plugin system
 call plug#end()
 
-" To display line numbers relative to the line with the cursor, use:
-:set relativenumber
+set laststatus=2
+set noshowmode
 
-" Highlight matches
-:set hlsearch
-" Shortcut to disable it
-" TODO
+set clipboard=unnamed
 
-" Enable the Vim plugin by adding the following to your 
-" Vim configuration file (default: ~/.vimrc):
-set rtp+=/opt/local/share/fzf/vim
+" UTF-8 support
+set encoding=utf-8
 
-"" Shortcuts for NERDTRee
+" enable syntax highlighting
+syntax enable
 
-nnoremap <D-N> :NERDTree<CR>
+let python_highlight_all=1
+syntax on
+
+set hlsearch
+
+" show line numbers
+set number
+
+set norelativenumber
+
+" set tabs to have 4 spaces
+set ts=4
+
+" indent when moving to the next line while writing code
+set autoindent
+
+" expand tabs into spaces
+set expandtab
+
+" when using the >> or << commands, shift lines by 4 spaces
+set shiftwidth=4
+
+" show a visual line under the cursor's current line
+set cursorline
+
+" show the matching part of the pair for [] {} and ()
+set showmatch
+
+" Reload current file automatically
+set autoread
+
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
+
+" use Ag with ack.vim
+let g:ackprg = 'ag --vimgrep'
+
+" enable AutoSave on Vim startup
+let g:auto_save = 1
+
 nmap <F6> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
 
-"Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" https://stackoverflow.com/questions/2413005/switching-between-tabs-in-nerdtree
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+map  <C-n> :tabnew<CR>
 
-"Smart way to move between tabs
-map <S-h> :tabp<CR>
-map <S-l> :tabn<CR>
+"split navigations
+nnoremap <S-J> <C-W><C-J>
+nnoremap <S-K> <C-W><C-K>
+nnoremap <S-L> <C-W><C-L>
+nnoremap <S-H> <C-W><C-H>
+
+" FZF.vim
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <C-g> :Rg<Cr>
+
+let mapleader = ','
+
+
+set nobackup
+set nowb
+set noswapfile
